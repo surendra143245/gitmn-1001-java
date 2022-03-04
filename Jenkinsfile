@@ -3,17 +3,14 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-              echo "main"   
+              echo "building" 
+                sh "docker build -t my-app:1.0 ."
             }
         }
-        stage('Test') { 
+        stage('execute') { 
             steps {
-              echo "test"   
-            }
-        }
-        stage('Deploy') { 
-            steps {
-               echo "dev" 
+               echo "deploying" 
+                sh "docker run my-app:1.0"
             }
         }
     }
